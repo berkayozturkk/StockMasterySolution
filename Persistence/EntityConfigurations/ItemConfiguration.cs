@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.Features.Items.Queries.GetListStockExtract;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -32,3 +33,19 @@ public class ItemConfiguration : IEntityTypeConfiguration<Item>
         //builder.HasIndex(x => x.TransactionType).IsClustered();
     }
 }
+public class GetListStockExtractListItemDtoConfiguration : IEntityTypeConfiguration<GetListStockExtractListItemDto>
+{
+    public void Configure(EntityTypeBuilder<GetListStockExtractListItemDto> builder)
+    {
+
+        builder.Property(b => b.ID).HasColumnName("SiraNo").IsRequired();
+        builder.Property(b => b.TransactionType).HasColumnName("IslemTur").IsRequired();
+        builder.Property(b => b.DocumentNo).HasColumnName("EvrakNo").IsRequired();
+        builder.Property(b => b.Date).HasColumnName("Tarih").IsRequired();
+        builder.Property(b => b.InputAmount).HasColumnName("GirisMiktar").IsRequired();
+        builder.Property(b => b.InputAmount).HasColumnName("CikisMiktar").IsRequired();
+        builder.Property(b => b.AmountOfStock).HasColumnName("Stok").IsRequired();
+
+    }
+}
+

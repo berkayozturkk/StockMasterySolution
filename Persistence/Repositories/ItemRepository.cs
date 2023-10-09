@@ -26,7 +26,7 @@ public class ItemRepository : EfRepositoryBase<BaseDbContext> , IItemRepository/
     //    builder.ToView("GetStockExtractData");
     //}
 
-    public List<Item> GetListStockExtract(GetListStockExtractQuery getListStockExtractQuery)
+    public async Task<List<GetListStockExtractListItemDto>> GetListStockExtract(GetListStockExtractQuery getListStockExtractQuery)
     {
 		try
 		{
@@ -41,11 +41,14 @@ public class ItemRepository : EfRepositoryBase<BaseDbContext> , IItemRepository/
 
             string execQuery = @$"EXEC GETSTOCKDATA '{getListStockExtractQuery.ProductCode}', '{getListStockExtractQuery.StartDate}', '{getListStockExtractQuery.EndDate}'";
 
-            var stockDataList = _context.Set<Item>()
-                .FromSqlRaw(execQuery)
-                .ToList();
+            //var stockDataList = _context.Set<GetListStockExtractListItemDto>()
+            //    .FromSqlRaw(execQuery)
+            //    .ToList();
 
-            return stockDataList;
+            return new List<GetListStockExtractListItemDto>
+            {
+                new GetListStockExtractListItemDto { ID = 1, AmountOfStock = 3 },
+            };
         }
 		catch (Exception ex)
 		{

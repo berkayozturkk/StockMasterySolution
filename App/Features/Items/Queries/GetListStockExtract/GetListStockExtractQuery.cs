@@ -25,14 +25,14 @@ public class GetListStockExtractQuery : IRequest<List<GetListStockExtractListIte
             _itemRepository = itemRepository;
         }
 
-        public Task<List<GetListStockExtractListItemDto>> Handle(GetListStockExtractQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetListStockExtractListItemDto>> Handle(GetListStockExtractQuery request, CancellationToken cancellationToken)
         {
             //cast işlemleri
             //request.EndDate = Convert.ToInt32((new DateTime()).ToDate());
 
-            var data = _itemRepository.GetListStockExtract(request);
+            var data = await _itemRepository.GetListStockExtract(request);
 
-            return null;
+            return data;
         }
     }
 }

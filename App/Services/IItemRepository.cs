@@ -10,5 +10,5 @@ namespace Application.Services;
 
 public interface IItemRepository
 {
-    List<Item> GetListStockExtract(GetListStockExtractQuery getListStockExtractQuery);
+    Task<List<GetListStockExtractListItemDto>> GetListStockExtract(GetListStockExtractQuery getListStockExtractQuery);
 }

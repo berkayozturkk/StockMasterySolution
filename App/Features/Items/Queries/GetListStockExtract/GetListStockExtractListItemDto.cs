@@ -8,7 +8,11 @@ namespace Application.Features.Items.Queries.GetListStockExtract;
 
 public class GetListStockExtractListItemDto
 {
-    public DateTime StartDate { get; set; }
-    public DateTime EndTime { get; set; }
-    public int ProductCode { get; set; }
+    public int ID { get; set; }
+    public int TransactionType { get; set; }
+    public string DocumentNo { get; set; }
+    public int Date { get; set; }
+    public int InputAmount { get; set; }
+    public int OutputAmount { get; set; }
+    public int AmountOfStock { get; set; }
 }
