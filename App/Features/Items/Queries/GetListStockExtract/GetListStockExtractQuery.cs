@@ -11,28 +11,32 @@ namespace Application.Features.Items.Queries.GetListStockExtract;
 
 public class GetListStockExtractQuery : IRequest<GetListStockExtractResponse>
 {
-    public string StartDate { get; set; }
-    public string EndDate { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
     public string ProductCode { get; set; }
 
     public class GetListStockExtractQueryHandler :
         IRequestHandler<GetListStockExtractQuery, GetListStockExtractResponse>
     {
         private readonly IItemRepository _itemRepository;
+        private readonly IMapper _mapper;
 
-        public GetListStockExtractQueryHandler(IItemRepository itemRepository)
+        public GetListStockExtractQueryHandler(IItemRepository itemRepository, IMapper mapper)
         {
             _itemRepository = itemRepository;
+            _mapper = mapper;
         }
 
         public async Task<GetListStockExtractResponse> Handle(GetListStockExtractQuery request, CancellationToken cancellationToken)
         {
-            //cast işlemleri
-            //request.EndDate = Convert.ToInt32((new DateTime()).ToDate());
+            List<GetListStockExtractListItemDto> data = await _itemRepository.GetListStockExtract(request);
 
-            var data = await _itemRepository.GetListStockExtract(request);
+            List<GetListStockExtractResponse> mappingData = _mapper.Map<List<GetListStockExtractResponse>>(data);
 
-            return new GetListStockExtractResponse();
+            //logic işletilebilir
+            //mappingData.ForEach(item => { });
+
+            return new GetListStockExtractResponse() { StockExtarctData = mappingData };
         }
     }
 }

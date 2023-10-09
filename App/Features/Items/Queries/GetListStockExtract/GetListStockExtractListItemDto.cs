@@ -14,5 +14,5 @@ public class GetListStockExtractListItemDto
     public int Date { get; set; }
     public int InputAmount { get; set; }
     public int OutputAmount { get; set; }
-    //public int AmountOfStock { get; set; }
+    public int AmountOfStock { get; set; }
 }

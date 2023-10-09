@@ -1,5 +1,6 @@
 ﻿using Application.Features.Items.Queries.GetListStockExtract;
 using Application.Services;
+using Azure.Core;
 using Domain.Entities;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -39,7 +40,11 @@ public class ItemRepository : EfRepositoryBase<BaseDbContext> , IItemRepository/
             //    new SqlParameter("@BitisTarihi", getListStockExtractQuery.EndDate.ToString())
             //};
 
-            string execQuery = @$"EXEC GETSTOCKDATA '{getListStockExtractQuery.ProductCode}', '{getListStockExtractQuery.StartDate}', '{getListStockExtractQuery.EndDate}'";
+            int startDate = Convert.ToInt32(getListStockExtractQuery.StartDate.ToOADate());
+            int endDate = Convert.ToInt32(getListStockExtractQuery.EndDate.ToOADate());
+            string productCode = getListStockExtractQuery.ProductCode;
+
+            string execQuery = @$"EXEC GetStockExtractData '{productCode}', '{startDate}', '{endDate}'";
 
             //var stockDataList = _context.Set<GetListStockExtractListItemDto>()
             //    .FromSqlRaw(execQuery)
