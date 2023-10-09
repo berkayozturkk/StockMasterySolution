@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Items.Queries.GetListStockExtract;
 
-public class GetListStockExtractListItemDto
+public class GetListStockExtractResponse
 {
     public int ID { get; set; }
     public int TransactionType { get; set; }
@@ -14,5 +14,7 @@ public class GetListStockExtractListItemDto
     public int Date { get; set; }
     public int InputAmount { get; set; }
     public int OutputAmount { get; set; }
-    //public int AmountOfStock { get; set; }
+    public int AmountOfStock { get; set; }
+
+    public List<GetListStockExtractResponse> StockExtarctData { get; set; }
 }

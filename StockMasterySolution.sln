@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "App\Application.csproj", "{49579562-643F-4C96-AE42-49A59F3A3578}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "App\Application.csproj", "{49579562-643F-4C96-AE42-49A59F3A3578}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{C676D040-FC70-4FE5-A1BE-8F4A504BA60E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{C676D040-FC70-4FE5-A1BE-8F4A504BA60E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{D35BBB10-EE34-4D67-BBE8-0C0AA6ED1D21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{D35BBB10-EE34-4D67-BBE8-0C0AA6ED1D21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{7AEEAADA-2899-4FE5-B15C-B9C518751A69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{7AEEAADA-2899-4FE5-B15C-B9C518751A69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forms_", "Forms_\Forms_.csproj", "{C83F345C-B115-4049-A55B-3B6C1B4CD2C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7AEEAADA-2899-4FE5-B15C-B9C518751A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AEEAADA-2899-4FE5-B15C-B9C518751A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AEEAADA-2899-4FE5-B15C-B9C518751A69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C83F345C-B115-4049-A55B-3B6C1B4CD2C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C83F345C-B115-4049-A55B-3B6C1B4CD2C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C83F345C-B115-4049-A55B-3B6C1B4CD2C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C83F345C-B115-4049-A55B-3B6C1B4CD2C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

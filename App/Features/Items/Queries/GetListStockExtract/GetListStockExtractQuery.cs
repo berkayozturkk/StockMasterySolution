@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Items.Queries.GetListStockExtract;
 
-public class GetListStockExtractQuery : IRequest<List<GetListStockExtractListItemDto>>
+public class GetListStockExtractQuery : IRequest<GetListStockExtractResponse>
 {
     public string StartDate { get; set; }
     public string EndDate { get; set; }
     public string ProductCode { get; set; }
 
     public class GetListStockExtractQueryHandler :
-        IRequestHandler<GetListStockExtractQuery, List<GetListStockExtractListItemDto>>
+        IRequestHandler<GetListStockExtractQuery, GetListStockExtractResponse>
     {
         private readonly IItemRepository _itemRepository;
 
@@ -25,14 +25,14 @@ public class GetListStockExtractQuery : IRequest<List<GetListStockExtractListIte
             _itemRepository = itemRepository;
         }
 
-        public async Task<List<GetListStockExtractListItemDto>> Handle(GetListStockExtractQuery request, CancellationToken cancellationToken)
+        public async Task<GetListStockExtractResponse> Handle(GetListStockExtractQuery request, CancellationToken cancellationToken)
         {
             //cast işlemleri
             //request.EndDate = Convert.ToInt32((new DateTime()).ToDate());
 
             var data = await _itemRepository.GetListStockExtract(request);
 
-            return data;
+            return new GetListStockExtractResponse();
         }
     }
 }

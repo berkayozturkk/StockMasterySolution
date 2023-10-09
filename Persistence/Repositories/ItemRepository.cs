@@ -47,7 +47,7 @@ public class ItemRepository : EfRepositoryBase<BaseDbContext> , IItemRepository/
 
             return new List<GetListStockExtractListItemDto>
             {
-                new GetListStockExtractListItemDto { ID = 1, AmountOfStock = 3 },
+                new GetListStockExtractListItemDto { ID = 1, Date = 3 },
             };
         }
 		catch (Exception ex)
