@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities;
 
-public class Products
+public class Product
 {
     public int ID { get; set; }
     public string ProductCode { get; set; }
     public string ProductName { get; set; }
 
-    public Products()
+    public Product()
     {
         
     }
 
-    public Products(int id, string productCode, string productName)
+    public Product(int id, string productCode, string productName)
     {
         ID = id;
         ProductCode = productCode;

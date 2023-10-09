@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities;
 
-public class Items
+public class Item
 {
     public int ID { get; set; }
     public int TransactionType { get; set; }
@@ -19,12 +19,12 @@ public class Items
     public int Salary { get; set; }
     public string Unit { get; set; }
 
-    public Items()
+    public Item()
     {
         
     }
 
-    public Items(int id, int transactionType, string documentNo, int date, string productCode, int amount, int price, int salary, string unit)
+    public Item(int id, int transactionType, string documentNo, int date, string productCode, int amount, int price, int salary, string unit)
     {
         ID = id;
         TransactionType = transactionType;
