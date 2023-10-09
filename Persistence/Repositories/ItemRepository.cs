@@ -1,5 +1,9 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Application.Features.Items.Queries.GetListStockExtract;
+using Application.Services;
+using Domain.Entities;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Persistence.Context;
 using System;
 using System.Collections.Generic;
@@ -9,12 +13,47 @@ using System.Threading.Tasks;
 
 namespace Persistence.Repositories;
 
-public class ItemRepository : EfRepositoryBase<BaseDbContext>
+public class ItemRepository : EfRepositoryBase<BaseDbContext> , IItemRepository/*, IEntityTypeConfiguration<Item>*/
 {
     public ItemRepository(BaseDbContext context) : base(context)
     {
 
     }
 
-    
+    //public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Item> builder)
+    //{
+    //    builder.HasNoKey();
+    //    builder.ToView("GetStockExtractData");
+    //}
+
+    public List<Item> GetListStockExtract(GetListStockExtractQuery getListStockExtractQuery)
+    {
+		try
+		{
+            //var data = _context.Items.ToList();
+
+            //var parameters = new SqlParameter[]
+            //{
+            //    new SqlParameter("@Malkodu", getListStockExtractQuery.ProductCode),
+            //    new SqlParameter("@BaslangicTarihi", getListStockExtractQuery.StartDate.ToString()),
+            //    new SqlParameter("@BitisTarihi", getListStockExtractQuery.EndDate.ToString())
+            //};
+
+            string execQuery = @$"EXEC GETSTOCKDATA '{getListStockExtractQuery.ProductCode}', '{getListStockExtractQuery.StartDate}', '{getListStockExtractQuery.EndDate}'";
+
+            var stockDataList = _context.Set<Item>()
+                .FromSqlRaw(execQuery)
+                .ToList();
+
+            return stockDataList;
+        }
+		catch (Exception ex)
+		{
+            //Loglanmalı
+            //ex.SaveLog();
+
+            return null;
+		}
+
+    }
 }

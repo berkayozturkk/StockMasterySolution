@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using Application.Services;
+using AutoMapper;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +12,27 @@ namespace Application.Features.Items.Queries.GetListStockExtract;
 public class GetListStockExtractQuery : IRequest<List<GetListStockExtractListItemDto>>
 {
     public string StartDate { get; set; }
-    public string EndTime { get; set; }
-    public int ProductCode { get; set; }
+    public string EndDate { get; set; }
+    public string ProductCode { get; set; }
 
     public class GetListStockExtractQueryHandler :
         IRequestHandler<GetListStockExtractQuery, List<GetListStockExtractListItemDto>>
     {
+        private readonly IItemRepository _itemRepository;
+
+        public GetListStockExtractQueryHandler(IItemRepository itemRepository)
+        {
+            _itemRepository = itemRepository;
+        }
+
         public Task<List<GetListStockExtractListItemDto>> Handle(GetListStockExtractQuery request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            //cast işlemleri
+            //request.EndDate = Convert.ToInt32((new DateTime()).ToDate());
+
+            var data = _itemRepository.GetListStockExtract(request);
+
+            return null;
         }
     }
 }

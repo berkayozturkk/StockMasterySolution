@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Application.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Context;
+using Persistence.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,8 @@ public static class PersitsanceServiceRegistration
     {
         //services.AddDbContext<BaseDbContext>(options => options.UseInMemoryDatabase("TESTDB12M"));
         services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("TESTDB12M")));
+
+        services.AddScoped<IItemRepository,ItemRepository>();
 
         return services;
     }

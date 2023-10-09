@@ -22,6 +22,10 @@ public class BaseDbContext : DbContext
     {
         Configuration = configuration;
         Database.EnsureCreated();
+        
+        //if(!Database.CanConnect()){
+
+        //}
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
