@@ -21,39 +21,29 @@ public class ItemRepository : EfRepositoryBase<BaseDbContext> , IItemRepository/
 
     }
 
-    //public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Item> builder)
-    //{
-    //    builder.HasNoKey();
-    //    builder.ToView("GetStockExtractData");
-    //}
-
     public async Task<List<GetListStockExtractListItemDto>> GetListStockExtract(GetListStockExtractQuery getListStockExtractQuery)
     {
 		try
 		{
             //var data = _context.Items.ToList();
 
-            //var parameters = new SqlParameter[]
-            //{
-            //    new SqlParameter("@Malkodu", getListStockExtractQuery.ProductCode),
-            //    new SqlParameter("@BaslangicTarihi", getListStockExtractQuery.StartDate.ToString()),
-            //    new SqlParameter("@BitisTarihi", getListStockExtractQuery.EndDate.ToString())
-            //};
-
-            int startDate = Convert.ToInt32(getListStockExtractQuery.StartDate.ToOADate());
-            int endDate = Convert.ToInt32(getListStockExtractQuery.EndDate.ToOADate());
-            string productCode = getListStockExtractQuery.ProductCode;
-
-            string execQuery = @$"EXEC GetStockExtractData '{productCode}', '{startDate}', '{endDate}'";
-
-            //var stockDataList = _context.Set<GetListStockExtractListItemDto>()
-            //    .FromSqlRaw(execQuery)
-            //    .ToList();
-
-            return new List<GetListStockExtractListItemDto>
+            var parameters = new SqlParameter[]
             {
-                new GetListStockExtractListItemDto { ID = 1, Date = 3 },
+                new SqlParameter("@Malkodu", getListStockExtractQuery.ProductCode),
+                new SqlParameter("@BaslangicTarihi", getListStockExtractQuery.StartDate.ToOADate()),
+                new SqlParameter("@BitisTarihi", getListStockExtractQuery.EndDate.ToOADate())
             };
+
+            //int startDate = Convert.ToInt32(getListStockExtractQuery.StartDate.ToOADate());
+            //int endDate = Convert.ToInt32(getListStockExtractQuery.EndDate.ToOADate());
+            //string productCode = getListStockExtractQuery.ProductCode;
+            
+            string execQuery = @$"EXEC GetStockExtractData @Malkodu, @BaslangicTarihi, @BitisTarihi";
+            var stockDataList = _context.Set<GetListStockExtractListItemDto>()
+                .FromSqlRaw(execQuery,parameters)
+                .ToList();
+
+            return stockDataList;
         }
 		catch (Exception ex)
 		{

@@ -43,8 +43,8 @@ public class GetListStockExtractListItemDtoConfiguration : IEntityTypeConfigurat
         builder.Property(b => b.DocumentNo).HasColumnName("EvrakNo").IsRequired();
         builder.Property(b => b.Date).HasColumnName("Tarih").IsRequired();
         builder.Property(b => b.InputAmount).HasColumnName("GirisMiktar").IsRequired();
-        builder.Property(b => b.InputAmount).HasColumnName("CikisMiktar").IsRequired();
-        builder.Property(b => b.AmountOfStock).HasColumnName("Stok").IsRequired();
+        builder.Property(b => b.OutputAmount).HasColumnName("CikisMiktar").IsRequired();
+        builder.Property(b => b.Stock).HasColumnName("Stok").IsRequired();
 
     }
 }

@@ -11,10 +11,8 @@ public class GetListStockExtractResponse
     public int ID { get; set; }
     public int TransactionType { get; set; }
     public string DocumentNo { get; set; }
-    public int Date { get; set; }
+    public DateTime Date { get; set; }
     public int InputAmount { get; set; }
     public int OutputAmount { get; set; }
     public int AmountOfStock { get; set; }
-
-    public List<GetListStockExtractResponse> StockExtarctData { get; set; }
 }

@@ -18,7 +18,7 @@ public class MappingProfiles : Profile
             .ForMember(destinationMember: sDto => sDto.Date, memberOptions: opt => opt.MapFrom(c => c.Date))
             .ForMember(destinationMember: sDto => sDto.InputAmount, memberOptions: opt => opt.MapFrom(c => c.InputAmount))
             .ForMember(destinationMember: sDto => sDto.OutputAmount, memberOptions: opt => opt.MapFrom(c => c.OutputAmount))
-            .ForMember(destinationMember: sDto => sDto.AmountOfStock, memberOptions: opt => opt.MapFrom(c => c.AmountOfStock))
+            .ForMember(destinationMember: sDto => sDto.AmountOfStock, memberOptions: opt => opt.MapFrom(c => c.Stock))
             .ReverseMap();
     }
 }

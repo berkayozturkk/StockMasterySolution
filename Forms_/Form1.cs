@@ -19,12 +19,12 @@ namespace Forms_
 
         private async void btnGetData_Click(object sender, EventArgs e)
         {
-            GetListStockExtractQuery searchData = new GetListStockExtractQuery()
-            {
-                StartDate = btnStartDate.Text.ToString(),
-                EndDate = btnEndDate.Text.ToString(),
-                ProductCode = btnProductCode.Text.ToString(),
-            };
+            //GetListStockExtractQuery searchData = new GetListStockExtractQuery()
+            //{
+            //    StartDate = btnStartDate.Text.ToString(),
+            //    EndDate = btnEndDate.Text.ToString(),
+            //    ProductCode = btnProductCode.Text.ToString(),
+            //};
 
         }
     }

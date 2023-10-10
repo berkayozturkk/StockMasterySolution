@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Persistence.EntityConfigurations;
 using System;
 using System.Collections.Generic;
 using System.Linq;

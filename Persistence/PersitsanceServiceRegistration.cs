@@ -18,7 +18,7 @@ public static class PersitsanceServiceRegistration
         (this IServiceCollection services, IConfiguration configuration)
     {
         //services.AddDbContext<BaseDbContext>(options => options.UseInMemoryDatabase("TESTDB12M"));
-        services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("TESTDB12M")));
+        services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ConStr")));
 
         services.AddScoped<IItemRepository,ItemRepository>();
 

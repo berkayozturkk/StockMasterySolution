@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Items.Queries.GetListStockExtract;
 
-public class GetListStockExtractQuery : IRequest<GetListStockExtractResponse>
+public class GetListStockExtractQuery : IRequest<List<GetListStockExtractResponse>>
 {
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public string ProductCode { get; set; }
 
     public class GetListStockExtractQueryHandler :
-        IRequestHandler<GetListStockExtractQuery, GetListStockExtractResponse>
+        IRequestHandler<GetListStockExtractQuery, List<GetListStockExtractResponse>>
     {
         private readonly IItemRepository _itemRepository;
         private readonly IMapper _mapper;
@@ -27,7 +27,7 @@ public class GetListStockExtractQuery : IRequest<GetListStockExtractResponse>
             _mapper = mapper;
         }
 
-        public async Task<GetListStockExtractResponse> Handle(GetListStockExtractQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetListStockExtractResponse>> Handle(GetListStockExtractQuery request, CancellationToken cancellationToken)
         {
             List<GetListStockExtractListItemDto> data = await _itemRepository.GetListStockExtract(request);
 
@@ -36,7 +36,7 @@ public class GetListStockExtractQuery : IRequest<GetListStockExtractResponse>
             //logic işletilebilir
             //mappingData.ForEach(item => { });
 
-            return new GetListStockExtractResponse() { StockExtarctData = mappingData };
+            return mappingData;
         }
     }
 }
